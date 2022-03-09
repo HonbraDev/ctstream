@@ -33,6 +33,9 @@ def get_playlist_url(channelId: str):
     except:
         raise Exception("Error: Cannot connect to API")
 
+    if resp.status_code != 200:
+        raise Exception("Error: API returned status code " + str(resp.status_code))
+
     try:
         jesp = json.loads(resp.text)
     except:
@@ -48,10 +51,7 @@ def get_playlist_url(channelId: str):
 
 
 def get_stream_url(channelId: str, streamType="main"):
-    try:
-        playlist_url = get_playlist_url(channelId)
-    except:
-        raise Exception("Error: Cannot get playlist URL")
+    playlist_url = get_playlist_url(channelId)
 
     try:
         resp = requests.get(playlist_url)
@@ -96,10 +96,10 @@ def main():
         stream_url = get_stream_url(
             args.channel, ("timeshift" if args.timeshift else "main"))
         sys.stdout.write(stream_url + ("\n" if args.newline else ""))
-    except:
+    except Exception as e:
         if args.traceback:
             raise
-        print("Error: Cannot get stream URL")
+        print(e)
         sys.exit(1)
 
 
