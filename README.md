@@ -1,6 +1,6 @@
 # ČTStream
 
-Get MPEG-DASH streams from České televize
+Get MPEG-DASH streams from ČT
 
 ## CLI
 
