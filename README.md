@@ -48,9 +48,9 @@ python ctstream.py 1 -t
 ```py
 from ctstream import get_stream_url
 
-ctstream.get_stream_url("1")
-ctstream.get_stream_url("1", "main")
-ctstream.get_stream_url("1", "timeshift")
+get_stream_url("1")
+get_stream_url("1", "main")
+get_stream_url("1", "timeshift")
 ```
 
 ### Get playlist url
@@ -58,7 +58,7 @@ ctstream.get_stream_url("1", "timeshift")
 ```py
 from ctstream import get_playlist_url
 
-ctstream.get_playlist_url("1")
+get_playlist_url("1")
 ```
 
 ## Request flow
